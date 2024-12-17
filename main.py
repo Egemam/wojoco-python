@@ -1,8 +1,11 @@
 import portfolios
 import reviews
 import streamlit as st
+from streamlit_cookies_controller import CookieController
 
-st.title('WoJoCo - Your Job Search Companion')
+controller = CookieController()
+
+st.title('WoJoCo')
 
 action = input("Choose your action:\n1. Edit portfolio\n2. Leave a review\n3. Compare your portfolio with a company\n4. Exit\n")
 
@@ -23,3 +26,5 @@ elif action == "4":
     print("Goodbye!")
 else:
     print("Invalid action")
+
+print(controller.get('token'))
