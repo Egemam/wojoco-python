@@ -6,7 +6,7 @@ from streamlit_cookies_controller import CookieController
 controller = CookieController()
 
 st.title('WoJoCo')
-st.button("Login",on_click=st.switch_page("login.py"))
+#st.button("Login",on_click=st.switch_page("login.py"))
 action = input("Choose your action:\n1. Edit portfolio\n2. Leave a review\n3. Compare your portfolio with a company\n4. Exit\n")
 
 if action == "1":
