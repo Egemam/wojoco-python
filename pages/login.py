@@ -14,3 +14,5 @@ def login(username, password):
 username = st.text_input("Username", placeholder="JohnDoe")
 password = st.text_input("Password", placeholder="*******", type="password")
 button = st.button("Login", on_click=login(username,password))
+if button:
+    print(controller.get('token'))
