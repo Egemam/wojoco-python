@@ -7,7 +7,7 @@ controller = CookieController()
 st.title("Login")
 
 def login(username, password):
-    controller.set('token', base64.b64encode(username)+base64.b64encode(password))
+    controller.set('token', base64.b64encode(username.encode("ascii"))+base64.b64encode(password.encode("ascii")))
 
 username = st.text_input("Username", placeholder="JohnDoe")
 password = st.text_input("Password", placeholder="*******", type="password")
