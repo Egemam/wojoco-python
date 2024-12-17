@@ -14,6 +14,9 @@ def login(username, password):
         reader = csv.DictReader(csvfile)
         if token in [row['token'] for row in reader]:
             print("Login successful")
+            st.switch_page("main.py")
+        else:
+            print("Login failed")
     controller.set('token', token)
     print(controller.get('token'))
 
