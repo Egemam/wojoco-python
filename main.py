@@ -1,5 +1,8 @@
 import portfolios
 import reviews
+import streamlit as st
+
+st.title('WoJoCo - Your Job Search Companion')
 
 action = input("Choose your action:\n1. Edit portfolio\n2. Leave a review\n3. Compare your portfolio with a company\n4. Exit\n")
 
