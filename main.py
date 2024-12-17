@@ -1,9 +1,9 @@
 import portfolios
 import reviews
 import streamlit as st
-from streamlit_cookies_controller import CookieController
+#from streamlit_cookies_controller import CookieController
 
-controller = CookieController()
+#controller = CookieController()
 
 #st.button("Login",on_click=st.switch_page("pages/login.py"))
 action = input("Choose your action:\n1. Edit portfolio\n2. Leave a review\n3. Compare your portfolio with a company\n4. Exit\n")
@@ -26,4 +26,4 @@ elif action == "4":
 else:
     print("Invalid action")
 
-print(controller.get('token'))
+#print(controller.get('token'))
