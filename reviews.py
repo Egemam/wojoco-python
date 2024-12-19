@@ -1,6 +1,5 @@
 import os
 from groq import Groq
-import streamlit as st
 
 client = Groq(
     api_key=st.secrets["GROQ_TOKEN"]
