@@ -1,11 +1,9 @@
 import os
 from groq import Groq
-from dotenv import load_dotenv
-
-load_dotenv()
+import streamlit as st
 
 client = Groq(
-    api_key=os.getenv('TOKEN') 
+    api_key=st.secrets["GROQ_TOKEN"]
 )
 
 def compare_sum(user,place):
