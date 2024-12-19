@@ -3,8 +3,11 @@ from groq import Groq
 import streamlit as st
 import toml
 
+with open('.streamlit/secrets.toml', 'r') as f:
+    config = toml.load(f)
+
 client = Groq(
-    api_key=st.secrets["GROQ_TOKEN"]
+    api_key=config['GROQ_TOKEN']
 )
 
 def compare_sum(user,place):
