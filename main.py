@@ -3,14 +3,8 @@ import reviews
 import streamlit as st
 import csv
 from streamlit_cookies_controller import CookieController
-import toml
 
 controller = CookieController()
-
-with open('.streamlit/secrets.toml', 'r') as f:
-    config = toml.load(f)
-
-print(config['GROQ_TOKEN'])
 
 #st.button("Login",on_click=st.switch_page("pages/login.py"))
 with open('userlist.csv', newline='') as csvfile:
