@@ -8,6 +8,8 @@ import streamlit as st
 #st.button("Login",on_click=st.switch_page("pages/login.py"))
 action = input("Choose your action:\n1. Edit portfolio\n2. Leave a review\n3. Compare your portfolio with a company\n4. Exit\n")
 
+if st.button("review"):
+    print(reviews.compare_sum("egemam","maya"))
 if action == "1":
     user = input("Enter your name: ")
     text = input("Enter your portfolio: ")
