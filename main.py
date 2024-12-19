@@ -9,14 +9,10 @@ controller = CookieController()
 def review_compare():
     print(reviews.compare_sum("egemam","maya"))
 
-e = input("e")
 #st.button("Login",on_click=st.switch_page("pages/login.py"))
 with open('userlist.csv', newline='') as csvfile:
-    print("e")
     reader = csv.DictReader(csvfile)
-    print("e")
     if controller.get('token') in [row['token'] for row in reader]:
-        print("e")
         logout_button = st.button("Logout",on_click=controller.delete('token'))
 
 review_button = st.button("review",on_click=review_compare)
