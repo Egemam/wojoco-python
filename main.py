@@ -11,9 +11,12 @@ def review_compare():
 
 #st.button("Login",on_click=st.switch_page("pages/login.py"))
 with open('userlist.csv', newline='') as csvfile:
+    print("e")
     reader = csv.DictReader(csvfile)
+    print("e")
     if controller.get('token') in [row['token'] for row in reader]:
-        st.button("Logout",on_click=controller.delete('token'))
+        print("e")
+        logout_button = st.button("Logout",on_click=controller.delete('token'))
 
 review_button = st.button("review",on_click=review_compare)
 
