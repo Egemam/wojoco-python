@@ -20,7 +20,7 @@ def compare_sum(user,place):
             messages=[
                 {
                     "role": "user",
-                "content": f"Analyze the following content and decide if the place is matching with the person's portfolio. Adress to the person as you. Give your response with this format\nYes, No or Maybe. a list of reasons for yes and a list of reasons for no. DO NOT GIVE ANY OTHER RESPONSE OTHER THAN MENTIONED THINGS. Try to be optimistic:\n\n{text}\n\n{review_sum(place)}"
+                "content": f"Analyze the following content and decide if the place is matching with the person's portfolio. Adress to the person as you. Give your response with this format\n[answer,[reasons for yes],[resons for no]: Yes, No or Maybe. a list of reasons for yes and a list of reasons for no. DO NOT GIVE ANY OTHER RESPONSE OTHER THAN MENTIONED THINGS. Try to be optimistic:\n\n{text}\n\n{review_sum(place)}"
                 }
             ],
             model="llama-3.1-8b-instant",  # Use the model within token limits
