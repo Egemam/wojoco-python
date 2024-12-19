@@ -12,6 +12,7 @@ import csv
     if controller.get('token') in [row['token'] for row in reader]:
         logout_button = st.button("Logout",on_click=controller.delete('token'))'''
 def functionn():
+    print("a")
     print(reviews.compare_sum("egemam","maya"))
 
 review_button = st.button("review",on_click=functionn())
