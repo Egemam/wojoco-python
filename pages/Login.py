@@ -7,7 +7,7 @@ controller = CookieController()
 
 with open('userlist.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
-        if token in [row['token'] for row in reader]:
+        if controller.get('token') in [row['token'] for row in reader]:
             st.switch_page("main.py")
 
 
