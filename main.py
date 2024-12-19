@@ -6,15 +6,16 @@ from streamlit_cookies_controller import CookieController
 
 controller = CookieController()
 
+def review_compare():
+    print(reviews.compare_sum("egemam","maya"))
+
 #st.button("Login",on_click=st.switch_page("pages/login.py"))
 with open('userlist.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         if controller.get('token') in [row['token'] for row in reader]:
             st.button("Logout",on_click=controller.delete('token'))
 
-review_button = st.button("review")
-if review_button:
-    print(reviews.compare_sum("egemam","maya"))
+review_button = st.button("review",on_click=review_compare)
 
 '''if action == "1":
     user = input("Enter your name: ")
