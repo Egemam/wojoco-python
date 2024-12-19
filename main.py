@@ -15,7 +15,7 @@ def show_comparison():
     text = eval(reviews.compare_sum("egemam","maya"))
     f'''{text}'''
     f'''images/{text[0]}.png'''
-    #result_icon = st.image(f"images/{text[0]}.png")
+    result_icon = st.image(f"images/{text[0]}.png")
     st.write(
         
     )
