@@ -4,6 +4,13 @@ import streamlit as st
 import csv
 from streamlit_cookies_controller import CookieController
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+print(os.getenv('TOKEN')) #os.getenv('TOKEN') 
+
 controller = CookieController()
 
 #st.button("Login",on_click=st.switch_page("pages/login.py"))
