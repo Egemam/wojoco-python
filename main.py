@@ -18,7 +18,6 @@ def show_comparison():
     while 1:
         with open('userlist.csv', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
-            "e"
             if controller.get('token') in [row['token'] for row in reader]:
                 for row in reader:
                     "e"
