@@ -13,7 +13,7 @@ with open('userlist.csv', newline='') as csvfile:
         logout_button = st.button("Logout",on_click=controller.delete('token'))
 def functionn():
     print("a")
-    print(reviews.compare_sum("egemam","maya"))
+    f'''{reviews.compare_sum("egemam","maya")}'''
 
 review_button = st.button("review",on_click=functionn())
 
