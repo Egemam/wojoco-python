@@ -20,6 +20,7 @@ def show_comparison():
             reader = csv.DictReader(csvfile)
             if controller.get('token') in [row['token'] for row in reader]:
                 for row in reader:
+                    "e"
                     if controller.get('token') == row['token']:
                         try:
                             text = eval(reviews.compare_sum(row['username'],"maya"))
