@@ -11,10 +11,13 @@ with open('userlist.csv', newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     if controller.get('token') in [row['token'] for row in reader]:
         logout_button = st.button("Logout",on_click=controller.delete('token'))
-def functionn():
-    print("a")
-    f'''{reviews.compare_sum("egemam","maya")}'''
+def show_comparison():
+    text = reviews.compare_sum("egemam","maya")
+    result_icon = st.image(f"{text[0]}.png")
+    st.write(
+        
+    )
 
-review_button = st.button("review",on_click=functionn())
+review_button = st.button("review",on_click=show_comparison())
 
 print(controller.get('token'))
