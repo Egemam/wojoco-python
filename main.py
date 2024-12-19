@@ -32,4 +32,4 @@ def show_comparison():
                         except:
                             continue
 
-review_button = st.button("review",on_click=show_comparison())
+st.button("review",on_click=show_comparison())
