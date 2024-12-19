@@ -13,6 +13,7 @@ with open('userlist.csv', newline='') as csvfile:
         logout_button = st.button("Logout",on_click=controller.delete('token'))
 def show_comparison():
     text = reviews.compare_sum("egemam","maya")
+    print(f"images/{text[0]}.png")
     result_icon = st.image(f"images/{text[0]}.png")
     st.write(
         
