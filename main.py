@@ -33,5 +33,3 @@ def show_comparison():
                             continue
 
 review_button = st.button("review",on_click=show_comparison())
-
-f"{controller.get('token')}"
