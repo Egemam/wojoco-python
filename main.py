@@ -7,6 +7,7 @@ from streamlit_cookies_controller import CookieController
 #st.button("Login",on_click=st.switch_page("pages/login.py"))
 with open('userlist.csv', newline='') as csvfile:
     controller = CookieController()
+    print(controller.get('token'))
     reader = csv.DictReader(csvfile)
     if controller.get('token') in [row['token'] for row in reader]:
         logout_button = st.button("Logout",on_click=controller.delete('token'))
@@ -16,4 +17,4 @@ def functionn():
 
 review_button = st.button("review",on_click=functionn())
 
-#print(controller.get('token'))
+print(controller.get('token'))
