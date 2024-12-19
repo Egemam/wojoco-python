@@ -28,6 +28,8 @@ def show_comparison():
                         break
                     except:
                         continue
+                else:
+                    st.write("You are not logged in")
 
 review_button = st.button("review",on_click=show_comparison())
 
