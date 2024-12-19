@@ -17,6 +17,7 @@ def show_comparison():
         with open('userlist.csv', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             if controller.get('token') in [row['token'] for row in reader]:
+                st.write("You are logged in as "+controller.get('token'))
                 for row in reader:
                     if controller.get('token') == row['token']:
                         try:
