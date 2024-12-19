@@ -5,7 +5,11 @@ import csv
 
 controller = CookieController()
 
-st.title("Login")
+with open('userlist.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        if token in [row['token'] for row in reader]:
+            st.switch_page("main.py")
+
 
 def login(username, password):
     token = base64.b64encode(username.encode("ascii")).decode("ascii")+"."+base64.b64encode(password.encode("ascii")).decode("ascii")
