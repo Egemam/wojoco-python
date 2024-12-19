@@ -6,7 +6,7 @@ from streamlit_cookies_controller import CookieController
 
 controller = CookieController()
 
-print(st.secrets["TOKEN"])
+print(st.secrets["GROQ_TOKEN"])
 
 #st.button("Login",on_click=st.switch_page("pages/login.py"))
 with open('userlist.csv', newline='') as csvfile:
