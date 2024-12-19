@@ -14,15 +14,20 @@ with open('userlist.csv', newline='') as csvfile:
         logout_button = st.button("Logout",on_click=controller.set('token',""))
 def show_comparison():
     while 1:
-        try:
-            text = eval(reviews.compare_sum("egemam","maya"))
-            result_icon = st.image(f"images/{text[0]}.png")
-            break
-        except:
-            continue
-    st.write(
-        
-    )
+        with open('userlist.csv', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if controller.get('token') == row['token']:
+                try:
+                    text = eval(reviews.compare_sum(row['username'],"maya"))
+                    result_icon = st.image(f"images/{text[0]}.png")
+                    for positive in text[1]:
+                        st.write(
+                            positive
+                        )
+                    break
+                except:
+                    continue
 
 review_button = st.button("review",on_click=show_comparison())
 
