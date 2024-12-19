@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 client = Groq(
-    api_key=os.getenv('TOKEN') 
+    api_key=st.secrets["TOKEN"]
 )
 
 def compare_sum(user,place):
