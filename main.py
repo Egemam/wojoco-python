@@ -16,7 +16,6 @@ st.write("You are logged in as " + controller.get('token'))
 
 def show_comparison():
     while 1:
-        "e"
         with open('userlist.csv', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             "e"
