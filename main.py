@@ -19,8 +19,8 @@ def show_comparison():
         with open('userlist.csv', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             if controller.get('token') in [row['token'] for row in reader]:
+                "e"
                 for row in reader:
-                    "e"
                     if controller.get('token') == row['token']:
                         try:
                             text = eval(reviews.compare_sum(row['username'],"maya"))
