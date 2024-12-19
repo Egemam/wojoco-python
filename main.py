@@ -18,16 +18,16 @@ def show_comparison():
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if controller.get('token') == row['token']:
-                try:
-                    text = eval(reviews.compare_sum(row['username'],"maya"))
-                    result_icon = st.image(f"images/{text[0]}.png")
-                    for positive in text[1]:
-                        st.write(
-                            positive
-                        )
-                    break
-                except:
-                    continue
+                    try:
+                        text = eval(reviews.compare_sum(row['username'],"maya"))
+                        result_icon = st.image(f"images/{text[0]}.png")
+                        for positive in text[1]:
+                            st.write(
+                                positive
+                            )
+                        break
+                    except:
+                        continue
 
 review_button = st.button("review",on_click=show_comparison())
 
