@@ -12,6 +12,7 @@ controller = CookieController()
     reader = csv.DictReader(csvfile)
     if controller.get('token') in [row['token'] for row in reader]:
         logout_button = st.button("Logout",on_click=controller.set('token',""))'''
+st.write("You are logged in as "+controller.get('token'))
 
 def show_comparison():
     while 1:
