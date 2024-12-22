@@ -15,10 +15,10 @@ client = Groq(
 )
 
 def compare_sum(user,place):
-    if not userlist.find({"_id": user})["porfolio"]:
+    if not portfolios.portfolio_read(user):
         st.warning("You should first write a porfolio")
     else:
-        portfolio = userlist.find({"_id": user})["porfolio"]
+        portfolio = portfolios.portfolio_read(user)
         response = client.chat.completions.create(
             messages=[
                 {
