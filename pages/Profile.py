@@ -63,7 +63,7 @@ with st.sidebar:
     else:
         st.write("Please log in.")
 
-text = st.text_area("Write your portfolio")
+text = st.text_area("Write your portfolio",value=portfolios.portfolio_read(get_username()))
 # Function to read CSV and check login
 st.button("Write", on_click=writetext(text))
 # Main button for showing the comparison
