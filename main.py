@@ -8,12 +8,13 @@ from pymongo.server_api import ServerApi
 
 MongoClient(st.secrets["MONGODB_URI"], server_api=ServerApi('1'))
 # Send a ping to confirm a successful connection
-try:
-    client.admin.command('ping')
-    print("Pinged your deployment. You successfully connected to MongoDB!")
-except Exception as e:
-    print(e)
-    
+def ping():
+    try:
+        client.admin.command('ping')
+        "Pinged your deployment. You successfully connected to MongoDB!"
+    except Exception as e:
+        e
+
 # Initialize CookieController
 controller = CookieController()
 
@@ -25,3 +26,4 @@ def readtext():
 # Function to read CSV and check login
 st.button("Write", on_click=writetext)
 st.button("Read", on_click=readtext)
+st.button("Ping", on_click=ping)
