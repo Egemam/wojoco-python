@@ -15,7 +15,7 @@ def show_comparison():
             st.write("Please log in to access this page.")
             return 0
         st.write(row['username'] for row in readertest)
-        name = "".join(row['username'] for row in readertest)
+        name = "".join(row['username'] for row in reader)
         while 1:
             try:
                 text = eval(reviews.compare_sum(name,"maya"))
