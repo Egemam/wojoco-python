@@ -20,7 +20,7 @@ def show_comparison():
             reader = csv.DictReader(csvfile)
             controller.get('token')
             if controller.get('token') in [row['token'] for row in reader]:
-                st.write(e)
+                st.write("e")
                 for row in reader:
                     if controller.get('token') == row['token']:
                         try:
