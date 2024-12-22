@@ -6,7 +6,13 @@ from streamlit_cookies_controller import CookieController
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
-client = MongoClient(st.secrets["MONGODB_URI"], server_api=ServerApi('1'))
+cluster = MongoClient(st.secrets["MONGODB_URI"], server_api=ServerApi('1'))
+db = cluster["wojoco"]
+collection = db["userlist"]
+
+def insert():
+    collection.insert_one({"_id": 0, "username": "egemam", "password": "3131", "token": "ZWdlbWFt.MzEzMQ=="})
+
 # Send a ping to confirm a successful connection
 def ping():
     try:
@@ -26,4 +32,4 @@ def readtext():
 # Function to read CSV and check login
 st.button("Write", on_click=writetext)
 st.button("Read", on_click=readtext)
-st.button("Ping", on_click=ping)
+st.button("Insert", on_click=ping)
