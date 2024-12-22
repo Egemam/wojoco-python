@@ -10,6 +10,9 @@ collection = db["userlist"]
 
 controller = CookieController()
 
+if controller.get('token'):
+    st.st.switch_page("main.py")
+
 def login(username, password):
     if collection.find_one({"_id": username}):
         token = base64.b64encode(username.encode("ascii")).decode("ascii")+"."+base64.b64encode(password.encode("ascii")).decode("ascii")
@@ -20,7 +23,7 @@ def login(username, password):
         else:
             st.warning("Your password is incorrect")
     else:
-            st.warning("This account does not exist")
+            st.warning("This user does not exist")
 
 username = st.text_input("Username (CaSeSeNsItIvE)", placeholder="JohnDoe")
 password = st.text_input("Password", placeholder="*******", type="password")

@@ -10,6 +10,9 @@ collection = db["userlist"]
 
 controller = CookieController()
 
+if controller.get('token'):
+    st.st.switch_page("main.py")
+
 def register(username, password):
     if not collection.find_one({"_id": username}):
         token = base64.b64encode(username.encode("ascii")).decode("ascii")+"."+base64.b64encode(password.encode("ascii")).decode("ascii")
