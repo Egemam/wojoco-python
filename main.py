@@ -14,6 +14,7 @@ controller = CookieController()
         logout_button = st.button("Logout",on_click=controller.set('token',""))'''
 
 def show_comparison():
+    st.write("e")
     while 1:
         controller.get('token')
         with open('userlist.csv', newline='') as csvfile:
