@@ -40,7 +40,7 @@ def write_review(user,place,text):
         st.warning("Please log in to access this page.")
         return
     reviews.review_submit(get_username(), place, text)
-    st.warning('You have successfuly updated your portfolio', icon="✅")
+    st.warning('You have successfuly posted a review for ' + place, icon="✅")
 
 # Main text area
 if not is_logged_in():
@@ -51,7 +51,7 @@ else:
     else:
         option = st.selectbox(
             "What place do you want to leave review on?",
-            [col[_id] for col in businesslist.find({})]
+            [col["_id"] for col in businesslist.find({})]
         )
     if option:
         review = st.text_area("Write your review",value=reviews.review_read(get_username(), option))
