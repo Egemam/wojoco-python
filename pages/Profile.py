@@ -70,7 +70,7 @@ def show_comparison(user,place):
             st.write("\n".join(text[2]))
             break  # Exit loop after successful execution
         except Exception as e:
-            printf("Error occurred: {e}\n")
+            print("Error occurred: {e}\n")
             continue  # Retry indefinitely
 
 if not is_logged_in():
