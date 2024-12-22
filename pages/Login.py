@@ -1,7 +1,12 @@
 import streamlit as st
 from streamlit_cookies_controller import CookieController
 import base64
-import csv
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+
+cluster = MongoClient(st.secrets["MONGODB_URI"], server_api=ServerApi('1'))
+db = cluster["wojoco"]
+collection = db["userlist"]
 
 controller = CookieController()
 
