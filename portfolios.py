@@ -7,7 +7,7 @@ db = cluster["wojoco"]
 collection = db["userlist"]
 
 def portfolio_submit(user, text):
-    collection.update_one({"_id": user}, {"$set": {"portfolio": text}})()
+    collection.update_one({"_id": user}, {"$set": {"portfolio": text}})
 
 def portfolio_read(user):
     path = f'portfolio/{user}.txt'
