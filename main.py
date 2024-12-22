@@ -21,22 +21,20 @@ def show_comparison():
             st.write(controller.get('token'))
             st.write(controller.get('token') in [row['token'] for row in reader])
             check = controller.get('token') in [row['token'] for row in reader]
-            if not check:
-                for row in reader:
-                    st.write(row)
-                    if controller.get('token') == row['token']:
-                        try:
-                            text = eval(reviews.compare_sum("egemam","maya"))
-                            st.write(text)
-                            result_icon = st.image(f"images/{text[0]}.png")
-                            for positive in text[1]:
-                                st.write(
-                                    positive
-                                )
-                            break
-                        except:
-                            continue
-                break
-            else: break
+            for row in reader:
+                st.write(row)
+                if controller.get('token') == row['token']:
+                    try:
+                        text = eval(reviews.compare_sum("egemam","maya"))
+                        st.write(text)
+                        result_icon = st.image(f"images/{text[0]}.png")
+                        for positive in text[1]:
+                            st.write(
+                                positive
+                            )
+                        break
+                    except:
+                        continue
+            break
 
 st.button("review",on_click=show_comparison())
