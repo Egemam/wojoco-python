@@ -77,9 +77,9 @@ if not is_logged_in():
         st.warning("Please log in to access this page.")
 else:
     option = st.selectbox(
-        "What place do you want to leave review on?",
+        "What place do you want to compare yourself to?",
         [col["_id"] for col in businesslist.find({})]
     )
     if option:
-        if st.button("Review"):
+        if st.button("Compare!"):
             show_comparison(get_username(), option)
