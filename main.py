@@ -18,6 +18,7 @@ def show_comparison():
             try:
                 print("name=" + name)
                 text = eval(reviews.compare_sum(name,"maya"))
+                print(text[0] + text[1] + text[2])
                 result_icon = st.image(f"images/{text[0]}.png")
                 st.write("Pros:")
                 st.write(
