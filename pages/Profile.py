@@ -71,7 +71,7 @@ def show_comparison(user,place):
             break  # Exit loop after successful execution
         except Exception as e:
             print(f"Error occurred: {e}\n")
-            continue  # Retry indefinitely
+            break  # Retry indefinitely
 
 if not is_logged_in():
         st.warning("Please log in to access this page.")
