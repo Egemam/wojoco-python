@@ -14,18 +14,19 @@ controller = CookieController()
 #        logout_button = st.button("Logout",on_click=controller.set('token',""))
 
 def show_comparison():
-    while 1:
-        controller.get('token')
-        with open('userlist.csv', newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
-            st.write(controller.get('token'))
-            st.write(controller.get('token') in [row['token'] for row in reader])
-            check = controller.get('token') in [row['token'] for row in reader]
-            name = "".join(row['username'] for row in reader if row['token'] == controller.get('token'))
-            st.write(name)
-            """for row in reader:
-                st.write(row['token'])
-                if controller.get('token') == row['token']:
+    
+    controller.get('token')
+    with open('userlist.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        st.write(controller.get('token'))
+        st.write(controller.get('token') in [row['token'] for row in reader])
+        check = controller.get('token') in [row['token'] for row in reader]
+        name = "".join(row['username'] for row in reader if row['token'] == controller.get('token'))
+        st.write(name)
+        for row in reader:
+            st.write(row['token'])
+            if controller.get('token') == row['token']:
+                while 1:
                     try:
                         text = eval(reviews.compare_sum("egemam","maya"))
                         st.write(text)
@@ -36,7 +37,6 @@ def show_comparison():
                             )
                         break
                     except:
-                        continue"""
-            break
+                        continue
 
 st.button("review",on_click=show_comparison)
