@@ -56,12 +56,13 @@ with st.sidebar:
     else:
         st.write("Please log in.")
 
+portfolio_text_area = st.text_area("Write your portfolio",value=portfolios.portfolio_read(get_username()))
+
 # Writes portfolio
 def writetext():
     if not is_logged_in():
         st.warning("Please log in to access this page.")
         return
-    portfolio_text_area = st.text_area("Write your portfolio",value=portfolios.portfolio_read(get_username()))
     portfolios.portfolio_submit(collection.find_one({"token": controller.get('token')})["_id"], portfolio_text_area)
 
 st.button("Write", on_click=writetext)
