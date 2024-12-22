@@ -16,7 +16,7 @@ def insert():
 # Send a ping to confirm a successful connection
 def ping():
     try:
-        client.admin.command('ping')
+        cluster.admin.command('ping')
         "Pinged your deployment. You successfully connected to MongoDB!"
     except Exception as e:
         e
