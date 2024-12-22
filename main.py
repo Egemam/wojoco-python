@@ -15,6 +15,7 @@ controller = CookieController()
 
 def show_comparison():
     while 1:
+        print("show comparison")
         controller.get('token')
         with open('userlist.csv', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
