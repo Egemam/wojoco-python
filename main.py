@@ -17,7 +17,7 @@ def show_comparison():
         while 1:
             try:
                 text = eval(reviews.compare_sum(name,"maya"))
-                if text == "This portfolio does not exist in the database" or text == "This place does not exist in the database":
+                if text == 1001 or text == 1002:
                     st.write(text)
                     break
                 result_icon = st.image(f"images/{text[0]}.png")

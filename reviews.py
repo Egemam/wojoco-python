@@ -10,9 +10,9 @@ def compare_sum(user,place):
     path = f'portfolio/{user}.txt'
     print(path)
     if not os.path.exists(path):
-        return("This portfolio does not exist in the database")
+        return(1001)
     elif not os.path.exists(path):
-        return("This place does not exist in the database")
+        return(1002)
     else:
         with open(path, 'r') as fp:
             text = fp.read()
