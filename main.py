@@ -11,7 +11,7 @@ db = cluster["wojoco"]
 collection = db["userlist"]
 
 def insert():
-    collection.insert_one({"_id": 0, "username": "egemam", "password": "3131", "token": "ZWdlbWFt.MzEzMQ=="})
+    collection.insert_one({"_id": "egemam", "password": "3131", "token": "ZWdlbWFt.MzEzMQ=="})
 
 # Send a ping to confirm a successful connection
 def ping():
