@@ -39,7 +39,7 @@ def show_comparison():
             st.write("\n".join(text[2]))
             break  # Exit loop after successful execution
         except Exception as e:
-            print(f"Error occurred: {e}")
+            f"Error occurred: {e}\n" + text
             continue  # Retry indefinitely
 
 # Logout logic
