@@ -39,17 +39,18 @@ def show_comparison():
         return
     while 1:
         try:
-            # Ensure reviews.compare_sum returns structured data
-            text = reviews.compare_sum(name, "maya")  # Expect a list [icon, pros, cons]
-            if len(text) != 3:
-                st.error("Invalid data format from reviews.compare_sum.")
-                return
-
-            st.image(f"images/{text[0]}.png")
+            print("name=" + name)
+            text = eval(reviews.compare_sum(name,"maya"))
+            print(text[0] + text[1] + text[2])
+            result_icon = st.image(f"images/{text[0]}.png")
             st.write("Pros:")
-            st.write("\n".join(text[1]))
+            st.write(
+                "\n".join(text[1])
+            )
             st.write("Cons:")
-            st.write("\n".join(text[2]))
+            st.write(
+                "\n".join(text[2])
+            )
             break
         except: continue
 
