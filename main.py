@@ -38,4 +38,4 @@ def show_comparison():
                         continue
             break
 
-st.button("review",on_click=show_comparison())
+st.button("review",on_click=show_comparison)
