@@ -13,7 +13,7 @@ def show_comparison():
         if not check:
             st.write("Please log in to access this page.")
             return 0
-        name = "".join(row['username'] for row in reader)
+        name = "".join(row['username'] for row in csv.DictReader(csvfile))
         while 1:
             try:
                 print("name=" + name)
