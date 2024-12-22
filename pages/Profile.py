@@ -64,7 +64,7 @@ def writetext(text):
         st.warning("Please log in to access this page.")
         return
     portfolios.portfolio_submit(collection.find_one({"token": controller.get('token')})["_id"], text)
-st.write(portfolios.portfolio_read(get_username()))
+    st.warning('You successfuly updated your portfolio', icon="✅")
 if st.button("Write"):
     writetext(portfolio_text_area)
 # Main button for showing the comparison
