@@ -32,4 +32,5 @@ def readtext():
 # Function to read CSV and check login
 st.button("Write", on_click=writetext)
 st.button("Read", on_click=readtext)
-st.button("Insert", on_click=ping)
+st.button("Ping", on_click=ping)
+st.button("Insert", on_click=insert)
