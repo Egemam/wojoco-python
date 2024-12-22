@@ -18,7 +18,7 @@ def show_comparison():
         controller.get('token')
         with open('userlist.csv', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
-            controller.get('token')
+            st.write(controller.get('token'))
             if controller.get('token') in [row['token'] for row in reader]:
                 for row in reader:
                     st.write(row['username'])
