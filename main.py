@@ -21,6 +21,7 @@ def show_comparison():
             st.write(controller.get('token'))
             st.write(controller.get('token') in [row['token'] for row in reader])
             if controller.get('token') in [row['token'] for row in reader]:
+                st.write(controller.get('token') in [row['token'] for row in reader])
                 for row in reader:
                     st.write(row['username'])
                     if controller.get('token') == row['token']:
