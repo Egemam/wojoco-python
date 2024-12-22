@@ -39,7 +39,7 @@ def writetext(text):
         st.warning("Please log in to access this page.")
         return
     portfolios.portfolio_submit(collection.find_one({"token": controller.get('token')})["_id"], text)
-    st.warning('You successfuly updated your portfolio', icon="✅")
+    st.warning('You have successfuly updated your portfolio', icon="✅")
 
 # Main text area
 portfolio_text_area = st.text_area("Write your portfolio",value=portfolios.portfolio_read(get_username()))
