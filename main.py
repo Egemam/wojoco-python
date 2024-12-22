@@ -27,9 +27,9 @@ def show_comparison():
         return
     
     name = get_username()
+    print("name=" + name)
     while 1:  # Infinite loop with try-except
         try:
-            print("name=" + name)
             text = eval(reviews.compare_sum(name, "maya"))  # Ensure `reviews.compare_sum` returns eval-safe data
             print(text[0] + text[1] + text[2])  # Debug print
             result_icon = st.image(f"images/{text[0]}.png")
