@@ -63,5 +63,5 @@ def review_submit(user, place, text):
 def review_read(user,place):
     try:
         return businesslist.find_one({"_id": place})[user]
-    else:
+    except:
         return ""
