@@ -10,5 +10,5 @@ def portfolio_submit(user, text):
     collection.update_one({"_id": user}, {"$set": {"portfolio": text}})
 
 def portfolio_read(user):
-    if not collection.find_one({"_id": user}):
+    if collection.find_one({"_id": user}):
         return collection.find_one({"_id": user})["portfolio"]
