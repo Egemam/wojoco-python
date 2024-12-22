@@ -14,8 +14,9 @@ controller = CookieController()
 #        logout_button = st.button("Logout",on_click=controller.set('token',""))
 
 def show_comparison():
-    
-    controller.get('token')
+    if controller.get('token') == "":
+        st.write("You are not logged in")
+        return 0
     with open('userlist.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         name = "".join(row['username'] for row in reader if row['token'] == controller.get('token'))
