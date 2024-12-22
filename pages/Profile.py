@@ -1,23 +1,24 @@
 import portfolios
 import reviews
 import streamlit as st
-import csv
 from streamlit_cookies_controller import CookieController
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+
+cluster = MongoClient(st.secrets["MONGODB_URI"], server_api=ServerApi('1'))
+db = cluster["wojoco"]
+collection = db["userlist"]
 
 # Initialize CookieController
 controller = CookieController()
 
 # Function to read CSV and check login
 def is_logged_in():
-    with open('userlist.csv', newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        return controller.get('token') in [row['token'] for row in reader]
+    return collection.find_one({"token": controller.get('token')})
 
 # Get the username
 def get_username():
-    with open('userlist.csv', newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        return "".join(row['username'] for row in reader if row['token'] == controller.get('token'))
+    return collection.find_one({"token": controller.get('token')})["_id"]
 
 # Show comparison logic
 def show_comparison():
