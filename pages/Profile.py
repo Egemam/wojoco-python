@@ -20,6 +20,35 @@ def is_logged_in():
 def get_username():
     return collection.find_one({"token": controller.get('token')})["_id"]
 
+# Logout logic
+def logout():
+    controller.set('token', "")
+
+# Sidebar with user information and logout
+with st.sidebar:
+    if is_logged_in():
+        name = get_username()
+        st.write(f"Welcome {name}!")
+        st.button("Logout", on_click=logout)
+    else:
+        st.write("Please log in.")
+
+# Writes portfolio
+def writetext(text):
+    if not is_logged_in():
+        st.warning("Please log in to access this page.")
+        return
+    portfolios.portfolio_submit(collection.find_one({"token": controller.get('token')})["_id"], text)
+    st.warning('You successfuly updated your portfolio', icon="✅")
+
+# Main text area
+portfolio_text_area = st.text_area("Write your portfolio",value=portfolios.portfolio_read(get_username()))
+# Main button for showing the comparison
+if st.button("Write"):
+    writetext(portfolio_text_area)
+
+
+
 # Show comparison logic
 def show_comparison():
     # Verify user login
@@ -43,29 +72,4 @@ def show_comparison():
             printf("Error occurred: {e}\n")
             continue  # Retry indefinitely
 
-# Logout logic
-def logout():
-    controller.set('token', "")
-
-# Sidebar with user information and logout
-with st.sidebar:
-    if is_logged_in():
-        name = get_username()
-        st.write(f"Welcome {name}!")
-        st.button("Logout", on_click=logout)
-    else:
-        st.write("Please log in.")
-
-portfolio_text_area = st.text_area("Write your portfolio",value=portfolios.portfolio_read(get_username()))
-
-# Writes portfolio
-def writetext(text):
-    if not is_logged_in():
-        st.warning("Please log in to access this page.")
-        return
-    portfolios.portfolio_submit(collection.find_one({"token": controller.get('token')})["_id"], text)
-    st.warning('You successfuly updated your portfolio', icon="✅")
-if st.button("Write"):
-    writetext(portfolio_text_area)
-# Main button for showing the comparison
 st.button("Review", on_click=show_comparison)

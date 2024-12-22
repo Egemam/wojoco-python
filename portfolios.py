@@ -11,4 +11,7 @@ def portfolio_submit(user, text):
 
 def portfolio_read(user):
     if collection.find_one({"_id": user}):
-        return collection.find_one({"_id": user})["portfolio"]
+        try:
+            return collection.find_one({"_id": user})["portfolio"]
+        except:
+            return ""
