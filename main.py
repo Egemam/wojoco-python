@@ -18,24 +18,19 @@ def show_comparison():
     controller.get('token')
     with open('userlist.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
-        st.write(controller.get('token'))
         name = "".join(row['username'] for row in reader if row['token'] == controller.get('token'))
-        st.write(name)
         while 1:
             try:
                 text = eval(reviews.compare_sum(name,"maya"))
-                st.write(text)
                 result_icon = st.image(f"images/{text[0]}.png")
                 st.write("Pros:")
-                for positive in text[1]:
-                    st.write(
-                        positive
-                    )
+                st.write(
+                    "\n".join(text[1])
+                )
                 st.write("Cons:")
-                for negative in text[1]:
-                    st.write(
-                        negative
-                    )
+                st.write(
+                    "\n".join(text[2])
+                )
                 break
             except:
                 continue
