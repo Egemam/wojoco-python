@@ -53,17 +53,14 @@ else:
 st.write("\n\n\n\n")
 
 # Show comparison logic
-def show_comparison():
+def show_comparison(user,place):
     # Verify user login
     if not is_logged_in():
         st.warning("Please log in to access this page.")
         return
-    
-    name = get_username()
     while 1:  # Infinite loop with try-except
-        "name=" + name
         try:
-            text = eval(reviews.compare_sum(name, "maya"))  # Ensure `reviews.compare_sum` returns eval-safe data
+            text = eval(reviews.compare_sum(name, place))  # Ensure `reviews.compare_sum` returns eval-safe data
             print(str(text[0]) + str(text[1]) + str(text[2]))  # Debug print
             result_icon = st.image(f"images/{str(text[0])}.png")
             st.write("Pros:")
@@ -75,4 +72,13 @@ def show_comparison():
             printf("Error occurred: {e}\n")
             continue  # Retry indefinitely
 
-st.button("Review", on_click=show_comparison)
+if not is_logged_in():
+        st.warning("Please log in to access this page.")
+else:
+    option = st.selectbox(
+        "What place do you want to leave review on?",
+        [col["_id"] for col in businesslist.find({})]
+    )
+    if option:
+        if st.button("Review"):
+            show_comparison(get_username(), option)
