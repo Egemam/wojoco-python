@@ -11,7 +11,7 @@ db = cluster["wojoco"]
 collection = db["userlist"]
 
 def insert():
-    collection.insert_one({"username": "test", "password": "test", "token": "boomshakalaka"})
+    collection.insert_one({"_id": 0, "username": "egemam", "password": "3131", "token": "ZWdlbWFt.MzEzMQ=="})
 
 # Send a ping to confirm a successful connection
 def ping():
@@ -29,8 +29,12 @@ def writetext():
     portfolios.portfolio_submit("egemam", text)
 def readtext():
     st.write(portfolios.portfolio_read("egemam"))
+def find(name):
+    collection.find_one({"username": name})
 # Function to read CSV and check login
 st.button("Write", on_click=writetext)
 st.button("Read", on_click=readtext)
 st.button("Ping", on_click=ping)
 st.button("Insert", on_click=insert)
+name = st.text_input("Username (CaSeSeNsItIvE)", placeholder="JohnDoe")
+st.button("Find", on_click=find(name))
