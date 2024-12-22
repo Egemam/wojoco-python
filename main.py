@@ -27,7 +27,7 @@ def show_comparison():
         return
     
     name = get_username()
-    print("name=" + name)
+    "name=" + name
     while 1:  # Infinite loop with try-except
         try:
             text = eval(reviews.compare_sum(name, "maya"))  # Ensure `reviews.compare_sum` returns eval-safe data
