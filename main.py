@@ -14,8 +14,9 @@ def show_comparison():
             st.write("Please log in to access this page.")
             return 0
         while 1:
+            name = "".join(row['username'] for row in reader if row['token'] == controller.get('token'))
+            text = eval(reviews.compare_sum(name,"maya"))
             try:
-                text = eval(reviews.compare_sum(name,"maya"))
                 result_icon = st.image(f"images/{text[0]}.png")
                 st.write("Pros:")
                 st.write(
@@ -27,6 +28,8 @@ def show_comparison():
                 )
                 break
             except:
+                if text == "This portfolio does not exist in the database" or text == "This place does not exist in the database":
+                    st.write(text)
                 continue
 
 def logout():
