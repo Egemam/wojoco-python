@@ -16,7 +16,7 @@ def show_comparison():
         while 1:
             try:
                 name = "".join(row['username'] for row in reader)
-                st.write(name)
+                st.write("name=" + name)
                 text = eval(reviews.compare_sum(name,"maya"))
                 result_icon = st.image(f"images/{text[0]}.png")
                 st.write("Pros:")
