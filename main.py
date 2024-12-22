@@ -23,7 +23,7 @@ def show_comparison():
             check = controller.get('token') in [row['token'] for row in reader]
             name = "".join(row['username'] for row in reader if row['token'] == controller.get('token'))
             st.write(name)
-            for row in reader:
+            """for row in reader:
                 st.write(row['token'])
                 if controller.get('token') == row['token']:
                     try:
@@ -36,7 +36,7 @@ def show_comparison():
                             )
                         break
                     except:
-                        continue
+                        continue"""
             break
 
 st.button("review",on_click=show_comparison)
