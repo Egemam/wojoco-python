@@ -11,7 +11,7 @@ collection = db["userlist"]
 controller = CookieController()
 
 if controller.get('token'):
-    st.st.switch_page("main.py")
+    st.switch_page("main.py")
 
 def login(username, password):
     if collection.find_one({"_id": username}):
