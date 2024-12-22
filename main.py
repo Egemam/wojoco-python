@@ -31,8 +31,7 @@ def show_comparison():
         "name=" + name
         try:
             text = eval(reviews.compare_sum(name, "maya"))  # Ensure `reviews.compare_sum` returns eval-safe data
-            text
-            str(text[0]) + str(text[1]) + str(text[2])  # Debug print
+            print(str(text[0]) + str(text[1]) + str(text[2]))  # Debug print
             result_icon = st.image(f"images/{str(text[0])}.png")
             st.write("Pros:")
             st.write("\n".join(text[1]))
@@ -40,7 +39,7 @@ def show_comparison():
             st.write("\n".join(text[2]))
             break  # Exit loop after successful execution
         except Exception as e:
-            f"Error occurred: {e}\n"
+            printf("Error occurred: {e}\n")
             continue  # Retry indefinitely
 
 # Logout logic
