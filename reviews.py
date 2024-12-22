@@ -9,9 +9,9 @@ client = Groq(
 def compare_sum(user,place):
     path = f'portfolio/{user}.txt'
     if not os.path.exists(path):
-        break
+        return 0
     elif not os.path.exists(path):
-        break
+        return 0
     else:
         with open(path, 'r') as fp:
             text = fp.read()
