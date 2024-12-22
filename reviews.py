@@ -59,6 +59,9 @@ def review_submit(user, place, text):
     if not businesslist.find_one({"_id": place}):
         businesslist.insert_one({"_id": place})
     businesslist.update_one({"_id": place}, {"$set": {user: text}})
-    
+
 def review_read(user,place):
-    return businesslist.find_one({"_id": place})[user]
+    try:
+        return businesslist.find_one({"_id": place})[user]
+    else:
+        return ""
