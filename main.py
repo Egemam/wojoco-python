@@ -20,8 +20,10 @@ def show_comparison():
             reader = csv.DictReader(csvfile)
             st.write(controller.get('token'))
             st.write(controller.get('token') in [row['token'] for row in reader])
-            if controller.get('token') in [row['token'] for row in reader]:
-                st.write(controller.get('token') in [row['token'] for row in reader])
+            check = controller.get('token') in [row['token'] for row in reader]
+            if check:
+                st.write(controller.get('token'))
+                st.write(check)
                 for row in reader:
                     st.write(row['username'])
                     if controller.get('token') == row['token']:
