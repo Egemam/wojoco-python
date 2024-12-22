@@ -6,18 +6,19 @@ from streamlit_cookies_controller import CookieController
 
 controller = CookieController()
 
+if 
 #st.button("Login",on_click=st.switch_page("pages/login.py"))
-#with open('userlist.csv', newline='') as csvfile:
-#    print(controller.get('token'))
-#    reader = csv.DictReader(csvfile)
-#    if controller.get('token') in [row['token'] for row in reader]:
-#        logout_button = st.button("Logout",on_click=controller.set('token',""))
+with open('userlist.csv', newline='') as csvfile:
+    print(controller.get('token'))
+    reader = csv.DictReader(csvfile)
+    if controller.get('token') in [row['token'] for row in reader]:
+        logout_button = st.button("Logout",on_click=controller.set('token',""))
 
 def show_comparison():
     with open('userlist.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         if not (controller.get('token') in [row['token'] for row in reader]):
-            st.write("You are not logged in")
+            st.switch_page("pages/login.py")
             return 0
         name = "".join(row['username'] for row in reader if row['token'] == controller.get('token'))
         while 1:
