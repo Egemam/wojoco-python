@@ -10,6 +10,5 @@ def portfolio_submit(user, text):
     collection.update_one({"_id": user}, {"$set": {"portfolio": text}})
 
 def portfolio_read(user):
-    path = f'portfolio/{user}.txt'
-    with open(path, 'r') as fp:
-        return fp.read()
+    if not collection.find_one("_id": user):
+        collection.find_one("_id": user)["portfolio"]
