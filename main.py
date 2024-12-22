@@ -7,11 +7,11 @@ from streamlit_cookies_controller import CookieController
 controller = CookieController()
 
 #st.button("Login",on_click=st.switch_page("pages/login.py"))
-'''with open('userlist.csv', newline='') as csvfile:
-    print(controller.get('token'))
-    reader = csv.DictReader(csvfile)
-    if controller.get('token') in [row['token'] for row in reader]:
-        logout_button = st.button("Logout",on_click=controller.set('token',""))'''
+#with open('userlist.csv', newline='') as csvfile:
+#    print(controller.get('token'))
+#    reader = csv.DictReader(csvfile)
+#    if controller.get('token') in [row['token'] for row in reader]:
+#        logout_button = st.button("Logout",on_click=controller.set('token',""))
 
 def show_comparison():
     while 1:
@@ -26,7 +26,7 @@ def show_comparison():
                     st.write(controller.get('token') == row['token'])
                     if controller.get('token') == row['token']:
                         try:
-                            text = eval(reviews.compare_sum(row['username'],"maya"))
+                            text = eval(reviews.compare_sum("egemam","maya"))
                             st.write(text)
                             result_icon = st.image(f"images/{text[0]}.png")
                             for positive in text[1]:
