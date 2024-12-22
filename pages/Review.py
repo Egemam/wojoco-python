@@ -46,10 +46,13 @@ def write_review(user,place,text):
 if not is_logged_in():
         st.warning("Please log in to access this page.")
 else:
-    option = st.selectbox(
-        "What place do you want to leave review on?",
-        [col[_id] for col in businesslist.find({})]
-    )
+    if st.checkbox("Is your place not on the list?"):
+        option = st.text_input("Write the name of your place")
+    else:
+        option = st.selectbox(
+            "What place do you want to leave review on?",
+            [col[_id] for col in businesslist.find({})]
+        )
     if option:
         review = st.text_area("Write your review",value=reviews.review_read(get_username(), option))
         if st.button("Write"):
