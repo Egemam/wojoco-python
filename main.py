@@ -33,5 +33,6 @@ def show_comparison():
                         except:
                             continue
                 break
+            else: break
 
 st.button("review",on_click=show_comparison())
