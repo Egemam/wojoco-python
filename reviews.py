@@ -1,6 +1,14 @@
 import os
 from groq import Groq
 import streamlit as st
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+import streamlit as st
+
+cluster = MongoClient(st.secrets["MONGODB_URI"], server_api=ServerApi('1'))
+db = cluster["wojoco"]
+userlist = db["userlist"]
+businesslist = db["businesses"]
 
 client = Groq(
     api_key=st.secrets["GROQ_TOKEN"]
@@ -48,8 +56,9 @@ def review_sum(place):
 
 
 def review_submit(user, place, text):
-    if not os.path.exists(f'reviews/{place}'):
-        os.makedirs(f'reviews/{place}')
-    path = f'reviews/{place}/{user}.txt'
-    with open(path, 'w') as fp:
-        fp.write(text)
+    if not businesslist.find_one({"_id": place}):
+        businesslist.insert_one({"_id": place})
+    businesslist.update_one({"_id": place}, {"$set": {user: text}})
+    
+def review_read(user,place):
+    return businesslist.find_one({"_id": place})[user]
