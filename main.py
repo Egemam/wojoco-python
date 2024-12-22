@@ -21,9 +21,11 @@ def show_comparison():
             controller.get('token')
             if controller.get('token') in [row['token'] for row in reader]:
                 for row in reader:
+                    st.write(row['username'])
                     if controller.get('token') == row['token']:
                         try:
                             text = eval(reviews.compare_sum(row['username'],"maya"))
+                            st.write(text)
                             result_icon = st.image(f"images/{text[0]}.png")
                             for positive in text[1]:
                                 st.write(
