@@ -39,7 +39,7 @@ def write_review(user,place,text):
     if not is_logged_in():
         st.warning("Please log in to access this page.")
         return
-    reviews.review_submit(userlist.find_one({"token": controller.get('token')})["_id"], text)
+    reviews.review_submit(get_username(), place, text)
     st.warning('You have successfuly updated your portfolio', icon="✅")
 
 # Main text area
@@ -48,7 +48,7 @@ if not is_logged_in():
 else:
     option = st.selectbox(
         "What place do you want to leave review on?",
-        [userlist.find_one({"_id": get_username()})["places"][i] for i in range(len(userlist.find_one({"_id": get_username()})["places"]))],
+        [col[_id] for col in userlist.find_many({})]
     )
     if option:
         review = st.text_area("Write your review",value=reviews.review_read(get_username(), option))
