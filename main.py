@@ -12,6 +12,7 @@ with st.sidebar:
         print(controller.get('token'))
         reader = csv.DictReader(csvfile)
         if controller.get('token') in [row['token'] for row in reader]:
+            st.write(f"Welcome {"".join(row['username'] for row in reader if row['token'] == controller.get('token'))}!")
             logout_button = st.button("Logout",on_click=controller.set('token',""))
 
 def show_comparison():
