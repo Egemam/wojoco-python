@@ -5,8 +5,13 @@ import csv
 from streamlit_cookies_controller import CookieController
 import pymongo
 
-client = pymongo.MongoClient(st.secrets["MONGODB_URI"])
-
+client = pymongo.MongoClient(st.secrets["MONGODB_URI"],server_api=ServerApi('1'))
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
 # Initialize CookieController
 controller = CookieController()
 
