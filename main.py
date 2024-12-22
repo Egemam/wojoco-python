@@ -19,6 +19,7 @@ with st.sidebar:
 def show_comparison():
     with open('userlist.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
+        st.write((controller.get('token') in [row['token'] for row in reader]))
         if not (controller.get('token') in [row['token'] for row in reader]):
             st.write("Please log in to access this page.")
             return 0
