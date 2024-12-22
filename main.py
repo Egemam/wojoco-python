@@ -32,7 +32,7 @@ def show_comparison():
         try:
             text = eval(reviews.compare_sum(name, "maya"))  # Ensure `reviews.compare_sum` returns eval-safe data
             text
-            st.write(text[0] + text[1] + text[2])  # Debug print
+            text[0] + text[1] + text[2]  # Debug print
             result_icon = st.image(f"images/{text[0]}.png")
             st.write("Pros:")
             st.write("\n".join(text[1]))
