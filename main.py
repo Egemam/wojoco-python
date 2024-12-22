@@ -15,12 +15,14 @@ controller = CookieController()
 
 def show_comparison():
     while 1:
+        controller.get('token')
         with open('userlist.csv', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             controller.get('token')
             if controller.get('token') in [row['token'] for row in reader]:
+                st.write(row)
                 for row in reader:
-                    st.write(row)
+                    
                     if controller.get('token') == row['token']:
                         try:
                             text = eval(reviews.compare_sum(row['username'],"maya"))
