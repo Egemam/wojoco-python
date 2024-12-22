@@ -56,4 +56,4 @@ else:
     if option:
         review = st.text_area("Write your review",value=reviews.review_read(get_username(), option))
         if st.button("Write"):
-            write_review(review)
+            write_review(get_username(), option, review)
