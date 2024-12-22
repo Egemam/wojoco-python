@@ -7,63 +7,53 @@ from streamlit_cookies_controller import CookieController
 # Initialize CookieController
 controller = CookieController()
 
-# Load CSV data
-@st.cache_data
-def load_user_data():
+# Function to read CSV and check login
+def is_logged_in():
     with open('userlist.csv', newline='') as csvfile:
-        return list(csv.DictReader(csvfile))
+        reader = csv.DictReader(csvfile)
+        return controller.get('token') in [row['token'] for row in reader]
 
-# Validate login
-def is_logged_in(token, user_data):
-    return any(row['token'] == token for row in user_data)
+# Get the username
+def get_username():
+    with open('userlist.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        return "".join(row['username'] for row in reader if row['token'] == controller.get('token'))
 
-# Get username
-def get_username(token, user_data):
-    return next((row['username'] for row in user_data if row['token'] == token), None)
+# Show comparison logic
+def show_comparison():
+    # Verify user login
+    if not is_logged_in():
+        st.warning("Please log in to access this page.")
+        return
+    
+    name = get_username()
+    while 1:  # Infinite loop with try-except
+        try:
+            print("name=" + name)
+            text = eval(reviews.compare_sum(name, "maya"))  # Ensure `reviews.compare_sum` returns eval-safe data
+            print(text[0] + text[1] + text[2])  # Debug print
+            result_icon = st.image(f"images/{text[0]}.png")
+            st.write("Pros:")
+            st.write("\n".join(text[1]))
+            st.write("Cons:")
+            st.write("\n".join(text[2]))
+            break  # Exit loop after successful execution
+        except Exception as e:
+            print(f"Error occurred: {e}")
+            continue  # Retry indefinitely
 
 # Logout logic
 def logout():
     controller.set('token', "")
 
-# Show comparison
-def show_comparison():
-    user_data = load_user_data()
-    token = controller.get('token')
-    if not is_logged_in(token, user_data):
-        st.warning("Please log in to access this page.")
-        return
-    
-    name = get_username(token, user_data)
-    if not name:
-        st.error("Unable to fetch user data.")
-        return
-    while 1:
-        try:
-            print("name=" + name)
-            text = eval(reviews.compare_sum(name,"maya"))
-            print(text[0] + text[1] + text[2])
-            result_icon = st.image(f"images/{text[0]}.png")
-            st.write("Pros:")
-            st.write(
-                "\n".join(text[1])
-            )
-            st.write("Cons:")
-            st.write(
-                "\n".join(text[2])
-            )
-            break
-        except: continue
-
-# Sidebar
+# Sidebar with user information and logout
 with st.sidebar:
-    user_data = load_user_data()
-    token = controller.get('token')
-    if is_logged_in(token, user_data):
-        name = get_username(token, user_data)
+    if is_logged_in():
+        name = get_username()
         st.write(f"Welcome {name}!")
         st.button("Logout", on_click=logout)
     else:
         st.write("Please log in.")
 
-# Main button
+# Main button for showing the comparison
 st.button("Review", on_click=show_comparison)
