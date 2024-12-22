@@ -30,7 +30,7 @@ def writetext():
 def readtext():
     st.write(portfolios.portfolio_read("egemam"))
 def find(name):
-    collection.find_one({"username": name})
+    st.write(collection.find_one({"username": name}))
 # Function to read CSV and check login
 st.button("Write", on_click=writetext)
 st.button("Read", on_click=readtext)
