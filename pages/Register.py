@@ -10,7 +10,7 @@ collection = db["userlist"]
 
 controller = CookieController()
 
-def login(username, password):
+def register(username, password):
     if not collection.find_one({"_id": username}):
         token = base64.b64encode(username.encode("ascii")).decode("ascii")+"."+base64.b64encode(password.encode("ascii")).decode("ascii")
         collection.insert_one({"_id": username, "password": password, "token": token})
@@ -23,4 +23,4 @@ username = st.text_input("Username (CaSeSeNsItIvE)", placeholder="JohnDoe")
 password = st.text_input("Password", placeholder="*******", type="password")
 button = st.button("Join Us!")
 if button:
-    login(username,password)
+    register(username,password)
