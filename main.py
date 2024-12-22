@@ -3,6 +3,9 @@ import reviews
 import streamlit as st
 import csv
 from streamlit_cookies_controller import CookieController
+import pymongo
+
+client = pymongo.MongoClient(st.secrets["MONGODB_URI"])
 
 # Initialize CookieController
 controller = CookieController()
