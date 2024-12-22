@@ -14,13 +14,10 @@ def show_comparison():
             st.write("Please log in to access this page.")
             return 0"""
         st.write(row['username'] for row in reader)
-        name = "".join(row['username'] for row in reader)
         while 1:
             try:
+                name = "".join(row['username'] for row in reader)
                 text = eval(reviews.compare_sum(name,"maya"))
-                if text == 1001 or text == 1002:
-                    st.write(text)
-                    break
                 result_icon = st.image(f"images/{text[0]}.png")
                 st.write("Pros:")
                 st.write(
