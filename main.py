@@ -23,7 +23,7 @@ def show_comparison():
             st.write(controller.get('token') in [row['token'] for row in reader])
             check = controller.get('token') in [row['token'] for row in reader]
             for row in reader:
-                st.write(row)
+                st.write(row['token'])
                 if controller.get('token') == row['token']:
                     try:
                         text = eval(reviews.compare_sum("egemam","maya"))
