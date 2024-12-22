@@ -36,13 +36,13 @@ def show_comparison():
 def logout():
     controller.set('token',"")
 
-with st.sidebar:
+"""with st.sidebar:
     with open('userlist.csv', newline='') as csvfile:
         print(controller.get('token'))
         reader = csv.DictReader(csvfile)
         if controller.get('token') in [row['token'] for row in reader]:
             name = "".join(row['username'] for row in reader if row['token'] == controller.get('token'))
             st.write(f"Welcome {name}!")
-            logout_button = st.button("Logout",on_click=logout)
+            logout_button = st.button("Logout",on_click=logout)"""
 
 st.button("review",on_click=show_comparison)
