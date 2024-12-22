@@ -16,6 +16,8 @@ def login(username, password):
         collection.insert_one({"_id": username, "password": password, "token": token})
         controller.set('token', token)
         st.switch_page("main.py")
+    else:
+        st.warning("This username is already in use")
 
 username = st.text_input("Username (CaSeSeNsItIvE)", placeholder="JohnDoe")
 password = st.text_input("Password", placeholder="*******", type="password")
