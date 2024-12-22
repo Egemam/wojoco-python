@@ -6,7 +6,7 @@ from streamlit_cookies_controller import CookieController
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
-MongoClient(st.secrets["MONGODB_URI"], server_api=ServerApi('1'))
+client = MongoClient(st.secrets["MONGODB_URI"], server_api=ServerApi('1'))
 # Send a ping to confirm a successful connection
 def ping():
     try:
