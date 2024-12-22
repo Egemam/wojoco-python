@@ -20,21 +20,18 @@ def show_comparison():
         reader = csv.DictReader(csvfile)
         st.write(controller.get('token'))
         name = "".join(row['username'] for row in reader if row['token'] == controller.get('token'))
-        #st.write(name)
-        for row in reader:
-            st.write(row['token'])
-            if controller.get('token') == row['token']:
-                while 1:
-                    try:
-                        text = eval(reviews.compare_sum("egemam","maya"))
-                        st.write(text)
-                        result_icon = st.image(f"images/{text[0]}.png")
-                        for positive in text[1]:
-                            st.write(
-                                positive
-                            )
-                        break
-                    except:
-                        continue
+        st.write(name)
+        while 1:
+            try:
+                text = eval(reviews.compare_sum(name,"maya"))
+                st.write(text)
+                result_icon = st.image(f"images/{text[0]}.png")
+                for positive in text[1]:
+                    st.write(
+                        positive
+                    )
+                break
+            except:
+                continue
 
 st.button("review",on_click=show_comparison)
