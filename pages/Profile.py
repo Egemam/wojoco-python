@@ -65,7 +65,7 @@ def writetext():
         return
     portfolios.portfolio_submit(collection.find_one({"token": controller.get('token')})["_id"], portfolio_text_area)
 st.write(portfolios.portfolio_read(get_username()))
-if st.button("Write")
+if st.button("Write"):
     writetext(portfolio_text_area)
 # Main button for showing the comparison
 st.button("Review", on_click=show_comparison)
