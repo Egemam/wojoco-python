@@ -23,7 +23,16 @@ def register(username, password):
         st.warning("This username is already in use")
 
 username = st.text_input("Username (CaSeSeNsItIvE)", placeholder="JohnDoe")
+if len(username) < 3:
+    st.warning("Username must be at least 3 characters long")
+if not username.isalnum():
+    st.warning("Username must be alphanumeric")
 password = st.text_input("Password", placeholder="*******", type="password")
-button = st.button("Join Us!")
-if button:
-    register(username,password)
+if len(password) < 8:
+    st.warning("Password must be at least 8 characters long")
+if " " in password:
+    st.warning("Password cannot contain spaces")
+if len(username) < 3 and len(password) < 8:
+    button = st.button("Join Us!")
+    if button:
+        register(username,password)
