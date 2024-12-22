@@ -21,7 +21,7 @@ def get_username():
     return collection.find_one({"token": controller.get('token')})["_id"]
 
 #writes portfolio
-def writetext(text):
+def writetext():
     if not is_logged_in():
         st.warning("Please log in to access this page.")
         return
@@ -65,6 +65,6 @@ with st.sidebar:
 
 text = st.text_area("Write your portfolio",value=portfolios.portfolio_read(get_username()))
 # Function to read CSV and check login
-st.button("Write", on_click=writetext(text))
+st.button("Write", on_click=writetext)
 # Main button for showing the comparison
 st.button("Review", on_click=show_comparison)
