@@ -14,7 +14,6 @@ controller = CookieController()
         logout_button = st.button("Logout",on_click=controller.set('token',""))'''
 
 def show_comparison():
-    st.write("e")
     while 1:
         controller.get('token')
         with open('userlist.csv', newline='') as csvfile:
@@ -22,7 +21,6 @@ def show_comparison():
             controller.get('token')
             if controller.get('token') in [row['token'] for row in reader]:
                 for row in reader:
-                    st.write("e")
                     if controller.get('token') == row['token']:
                         try:
                             text = eval(reviews.compare_sum(row['username'],"maya"))
