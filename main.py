@@ -26,9 +26,15 @@ def show_comparison():
                 text = eval(reviews.compare_sum(name,"maya"))
                 st.write(text)
                 result_icon = st.image(f"images/{text[0]}.png")
+                st.write("Pros:")
                 for positive in text[1]:
                     st.write(
                         positive
+                    )
+                st.write("Cons:")
+                for negative in text[1]:
+                    st.write(
+                        negative
                     )
                 break
             except:
