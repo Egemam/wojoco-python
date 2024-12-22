@@ -48,7 +48,7 @@ if not is_logged_in():
 else:
     option = st.selectbox(
         "What place do you want to leave review on?",
-        [col[_id] for col in businesslist.find_many({})]
+        [col[_id] for col in businesslist.find({})]
     )
     if option:
         review = st.text_area("Write your review",value=reviews.review_read(get_username(), option))
