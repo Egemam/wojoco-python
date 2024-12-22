@@ -9,10 +9,10 @@ controller = CookieController()
 def show_comparison():
     with open('userlist.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
-        #check = (controller.get('token') in [row['token'] for row in reader])
-        """if not check:
+        check = (controller.get('token') in [row['token'] for row in csv.DictReader(csvfile)])
+        if not check:
             st.write("Please log in to access this page.")
-            return 0"""
+            return 0
         name = "".join(row['username'] for row in reader)
         while 1:
             try:
