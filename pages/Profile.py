@@ -7,18 +7,19 @@ from pymongo.server_api import ServerApi
 
 cluster = MongoClient(st.secrets["MONGODB_URI"], server_api=ServerApi('1'))
 db = cluster["wojoco"]
-collection = db["userlist"]
+userlist = db["userlist"]
+businesslist = db["businesses"]
 
 # Initialize CookieController
 controller = CookieController()
 
 # Function to read CSV and check login
 def is_logged_in():
-    return collection.find_one({"token": controller.get('token')})
+    return userlist.find_one({"token": controller.get('token')})
 
 # Get the username
 def get_username():
-    return collection.find_one({"token": controller.get('token')})["_id"]
+    return userlist.find_one({"token": controller.get('token')})["_id"]
 
 # Logout logic
 def logout():
@@ -38,7 +39,7 @@ def writetext(text):
     if not is_logged_in():
         st.warning("Please log in to access this page.")
         return
-    portfolios.portfolio_submit(collection.find_one({"token": controller.get('token')})["_id"], text)
+    portfolios.portfolio_submit(userlist.find_one({"token": controller.get('token')})["_id"], text)
     st.warning('You have successfuly updated your portfolio', icon="✅")
 
 # Main text area
