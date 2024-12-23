@@ -39,7 +39,7 @@ def review_sum(place):
         messages=[
             {
                 "role": "user",
-                "content": f"Analyze the following comments and create a list with pros and cons:\n\n{text}"
+                "content": f"Analyze the following comments made by other people and create a list with pros and cons:\n\n{text}"
             }
         ],
         model="llama-3.1-8b-instant",  # Use the model within token limits
