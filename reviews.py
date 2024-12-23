@@ -34,7 +34,7 @@ def compare_sum(user,place):
 def review_sum(place):
     text = ""
     print([review for review in businesslist.find({"_id": place})])
-    text = "\n".join([review for review in businesslist.find({"_id": place})])
+    """text = "\n".join([review for review in businesslist.find({"_id": place})])
     print(text)
     response = client.chat.completions.create(
         messages=[
@@ -45,7 +45,7 @@ def review_sum(place):
         ],
         model="llama-3.1-8b-instant",  # Use the model within token limits
         stream=False,)
-    return(response.choices[0].message.content)
+    return(response.choices[0].message.content)"""
     
 
 
