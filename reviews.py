@@ -33,7 +33,7 @@ def compare_sum(user,place):
 
 def review_sum(place):
     text = ""
-    print(businesslist.find({"_id": place}))
+    print([review for review in businesslist.find({"_id": place})])
     text = "\n".join([review for review in businesslist.find({"_id": place})])
     print(text)
     response = client.chat.completions.create(
