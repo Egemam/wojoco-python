@@ -10,6 +10,9 @@ cluster = MongoClient(st.secrets["MONGODB_URI"], server_api=ServerApi('1'))
 db = cluster["wojoco"]
 userlist = db["userlist"]
 
+def is_logged_in():
+    return userlist.find_one({"token": controller.get('token')})
+    
 def get_username():
     return userlist.find_one({"token": controller.get('token')})["_id"]
 
