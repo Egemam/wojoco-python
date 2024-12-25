@@ -46,7 +46,7 @@ def writetext(text):
 if not is_logged_in():
         st.warning("Please log in to access this page.")
 else:
-    portfolio_text_area = st.text_area("Write your portfolio",value=portfolios.portfolio_read(get_username()))
+    portfolio_text_area = st.text_area("Write your portfolio(use at least 200 words and write it with a simple language)",value=portfolios.portfolio_read(get_username()))
     # Main button for showing the comparison
     if st.button("Write"):
         writetext(portfolio_text_area)
