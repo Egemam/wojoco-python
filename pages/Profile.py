@@ -63,12 +63,13 @@ def show_comparison(user,place):
     while 1:  # Infinite loop with try-except
         try:
             text = eval(reviews.compare_sum(name, place))  # Ensure `reviews.compare_sum` returns eval-safe data
-            print(str(text[0]) + str(text[1]) + str(text[2]))  # Debug print
+            print(str(text[0]) + str(text[1]) + str(text[2]) + str(text[3]))  # Debug print
             result_icon = st.image(f"images/{str(text[0])}.png")
+            st.write(f"You are {text[1]}% compatible with this place")
             st.write("Pros:")
-            st.write("\n".join(text[1]))
-            st.write("Cons:")
             st.write("\n".join(text[2]))
+            st.write("Cons:")
+            st.write("\n".join(text[3]))
             break  # Exit loop after successful execution
         except Exception as e:
             print(f"Error occurred: {e}\n")
