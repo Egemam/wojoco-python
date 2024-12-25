@@ -12,7 +12,6 @@ businesslist = db["businesses"]
 
 # Initialize CookieController
 controller = CookieController()
-st.write(st.session_state)
 
 # Function to read CSV and check login
 def is_logged_in():
